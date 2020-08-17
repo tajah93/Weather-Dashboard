@@ -1,0 +1,41 @@
+.jumbotron {
+    width: 100%;
+    height: 100%;
+    
+}
+
+#search-card {
+    width: 30vw !important;
+    padding-left: 10px;
+    margin-left: 20px;
+    display: inline-block;
+    float: left;
+    width: 20%
+}
+
+#cityWeather {
+    width: 60vw !important;
+    height: 40vh;
+    display: inline-block;
+    float: right;
+    width: 80%
+}
+
+#forecastTitle {
+    padding-top: 15px !important;
+    width: 30vw;
+    margin-left: 38%;
+    
+}
+
+#five-boxes {
+    margin-left: 37%;
+}
+
+.col-md-auto {
+    padding-right: 32px;
+}
+
+#forecastCard {
+    height: 40vh; 
+}
