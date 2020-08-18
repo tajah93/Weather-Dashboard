@@ -21,23 +21,9 @@
 
 
  
-//Function for current weather 
 
 
-// }
 
-// function fiveDay(city) {
-//     var fiveURL= "api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIkey;
-//     $.ajax({
-//         url: fiveURL,
-//         method: "GET"
-//     }).then(function(response) {
-//         console.log(response);
-
-//         $("#cityWeather").empty();
-//         $("#cityWeather").append(response);
-//     });
-// }
 
 //Creating API key variable
 var APIkey = "c1ba80aaf9665611e989d20c42601be8"; 
@@ -98,12 +84,10 @@ function currentWeather(city) {
         
           $("#cityWeather").append(uvIndex)
       });
-  });
-
-  
+  }); 
 }
 
-
+//Five-day forecast function 
 function fiveDay(city) {
         var fiveURL= "api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIkey;
         $.ajax({
@@ -131,7 +115,25 @@ function fiveDay(city) {
             $("#five-boxes").append(foreIcon, foreTemp, foreHum);
         });
     }
-    
+
+//Array list created for cities searched 
+var cityList= []
+
+//Prepending searched cities onto a list
+function List() {
+
+    //Emptied to prevent multiple buttons being created 
+    $("#cityList").empty();
+ 
+    for (var i=0; i < cityList.length; i++) {
+       var b = $("<button>");
+       b.addClass("location");
+       b.attr("data-name", cityList[i]);
+       b.text(cityList[i]);
+       $("#cityList").prepend(b)
+
+    }   
+};
 
 
 //Search button event listener when clicked
@@ -142,9 +144,9 @@ $("#search-city").on("click", function(event) {
         
         
         currentWeather(inputCity);
-        fiveDay(inputCity)
-    }
+        fiveDay(inputCity);
+        cityList.push(inputCity);
 
-
-    
+        List();
+    }    
 });

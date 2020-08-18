@@ -39,3 +39,7 @@
 #forecastCard {
     height: 40vh; 
 }
+
+.location {
+    display: block;
+}
