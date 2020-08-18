@@ -1,30 +1,3 @@
-// var locations = [];
-// $(document).ready(function() {
-//     var loggedCity= JSON.parse(localStorage.getItem('locations'));
-//     if (loggedCity !== null) {
-//         loggedCity === locations
-//     }
-//     showCities();
-// });
-
-// function logCities() {
-//     localStorage.setItem("locations", JSON.stringify(locations));
-// }
-
-// function showCities() {
-//     $("#cityList").html("") {
-//         if(locations !== null){
-//             return;
-//         }
-        
-//     }
-
-
- 
-
-
-
-
 //Creating API key variable
 var APIkey = "c1ba80aaf9665611e989d20c42601be8"; 
 
@@ -43,11 +16,17 @@ function currentWeather(city) {
 
       var cityName= $("<p>").text(response.name);
       console.log(cityName)
-      var cityDate= $("<p>").addClass("Date").text(response.dt);
+
+      //Date changed to MM/DD/YY
+      var date= new Date(response.dt * 1000).toLocaleDateString();
+      var cityDate= $("<p>").addClass("Date").text(date);
       var cityIcon= $("<img>").attr("src", "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png")
-      var cityTemp= $("<p>").addClass("current-temp").text("Temperature: " + response.main.temp);
-      var cityHum= $("<p>").addClass("current-hum").text("Humidity: " + response.main.humidity);
-      var cityWind= $("<p>").addClass("current-wind").text("Wind Speed: " + response.wind.speed);
+     
+      //Converting temp from Kelvin to Fahrenheit 
+      var temp = Math.round(((response.main.temp - 273.15) * 9/5 + 32));
+      var cityTemp= $("<p>").addClass("current-temp").text("Temperature: " + temp + "°F");
+      var cityHum= $("<p>").addClass("current-hum").text("Humidity: " + response.main.humidity + "%");
+      var cityWind= $("<p>").addClass("current-wind").text("Wind Speed: " + response.wind.speed + "mph");
       
       $("#cityWeather").empty();
       $("#cityWeather").append(cityName, cityDate, cityIcon, cityTemp, cityHum, cityWind);  
@@ -89,30 +68,47 @@ function currentWeather(city) {
 
 //Five-day forecast function 
 function fiveDay(city) {
-        var fiveURL= "api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIkey;
+        var fiveURL= "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIkey;
         $.ajax({
             url: fiveURL,
             method: "GET"
         }).then(function(response) {
             console.log(response);
-            //$("#five-boxes").empty();
+            $("#five-boxes").empty();
 
-            var forecast = response.list
+            var forecast = response.list;
             console.log(forecast)
             
-            for (var i=0;i< forecast.length; i++){
-                
-                //$(forecast[i]).text("")
-                //var Index = i*8 + 4;
+            for (var i = 0;i < forecast.length; i++){
+                //Pulling and setting times (3:00pm temp since that's when it's the hottest)
+                if (forecast[i].dt_txt.indexOf("15:00:00") !== -1) {
+
+                //creating cards and appending forecast data    
+                var Column= $("<div>").attr("class", "col-md-auto")
+                $("#five-boxes").append(Column);
+                var foreCard= $("<div>").attr("class", "card").attr("style", "width: 9rem;")
+                $("#five-boxes").append(foreCard);
+
+                //Date changed to MM/DD/YY
+                var fiveDate= new Date(forecast[i].dt * 1000).toLocaleDateString();
+                var foreDate= $("<header>").addClass("Date").text(fiveDate);
+                foreCard.append(foreDate);
                 var foreIcon= $("<img>").attr("src", "https://openweathermap.org/img/w/" + forecast[i].weather[0].icon + ".png")
-                var foreTemp= $("<p>").addClass("fore-temp").text("Temperature: " + forecast[i].main.temp);
-                var foreHum= $("<p>").addClass("fore-hum").text("Humidity: " + forecast[i].main.humidity);
+                foreCard.append(foreIcon);
+                var foreBody= $("<div>").attr("class", "card-body");
+                foreCard.append(foreBody);
+                //Converting temp from Kelvin to Fahrenheit 
+                var temp = Math.round(((forecast[i].main.temp - 273.15) * 9/5 + 32));
+                var foreTemp= $("<p>").addClass("fore-temp").text("Temperature: " + temp + "°F");
+                foreBody.append(foreTemp);
+                var foreHum= $("<p>").addClass("fore-hum").text("Humidity: " + forecast[i].main.humidity + "%");
+                foreBody.append(foreHum);
             }
+        }
 
 
     
-            $("#five-boxes").empty();
-            $("#five-boxes").append(foreIcon, foreTemp, foreHum);
+           
         });
     }
 
@@ -136,6 +132,16 @@ function List() {
 };
 
 
+
+// function Pull() {
+//     var saved = JSON.parse(localStorage.getItem("cities"));
+//     // if (saved !== null) {
+//     //     cityList = saved
+//     // }
+//     List();
+// };
+
+
 //Search button event listener when clicked
 $("#search-city").on("click", function(event) {
     event.preventDefault();
@@ -150,3 +156,12 @@ $("#search-city").on("click", function(event) {
         List();
     }    
 });
+
+$(b).on("click", function(event) {
+    event.preventDefault();
+        
+    localStorage.setItem("cities", JSON.stringify(cityList))
+    
+});
+
+
