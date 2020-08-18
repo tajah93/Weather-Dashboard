@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="weather.css">
+
+   
+    
+   
+  </head>
+  <body>
+    <div class="container-full-bg">
+      <div class="jumbotron">
+        <h1 class="display-4">Weather Dashboard</h1>
+      </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-4">
+            <div class="card" style="width: 18rem;" id="search-card">
+              <form class="form-inline">
+                <div class="form-group mb-2">
+                  <input type="search" class="form-control" id="city-input" placeholder="Search for a city">
+                </div>
+                <button id="search-city" type="submit" class="btn btn-primary mb-2">Search</button>
+              </form>
+              <ul class="list-group list-group-flush" id="cityList">
+                <li class="list-group-item"></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-8">
+            <div class="card" style="width: 18rem;" id="cityWeather">
+              <div class="card-body">
+                <h5 class="card-title" id="cityName"></h5>
+              </div>
+            </div>
+          </div>
+
+        <div class="row" id="forecastTitle">
+          <div class="col-8">
+          <h3>Your 5-Day Forecast</h3>
+        </div>
+      </div>
+
+        <div class="row" id="five-boxes">
+          <div class="col-md-auto">
+            <div class="card" style="width: 9rem;" id="forecastCard">
+              <div class="card-body"></div>
+            </div>
+          </div>
+
+          <div class="col-md-auto">
+            <div class="card" style="width: 9rem;" id="forecastCard">
+              <div class="card-body"></div>
+            </div>
+          </div>
+
+          <div class="col-md-auto">
+            <div class="card" style="width: 9rem;" id="forecastCard">
+              <div class="card-body"></div>
+            </div>
+          </div>
+
+          <div class="col-md-auto">
+            <div class="card" style="width: 9rem;" id="forecastCard">
+              <div class="card-body"></div>
+            </div>
+          </div>
+
+          <div class="col-md-auto">
+            <div class="card" style="width: 9rem;" id="forecastCard">
+              <div class="card-body"></div>    
+            </div>
+          </div>
+        </div>
+            
+         
+
+
+
+        </div>
+        
+        </div>
+      </div>
+  
+  
+      
+  
+  
+  
+      
+   
+  </body>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="weather.js"></script>
+  
+</html>
