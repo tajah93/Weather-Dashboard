@@ -130,6 +130,7 @@ function List() {
 
 
 //Search button event listener when clicked
+$(document).ready(function() {
 $("#search-city").on("click", function(event) {
     event.preventDefault();
 
@@ -142,6 +143,8 @@ $("#search-city").on("click", function(event) {
 
         List();
     }    
+});
+
 });
 
 // localStorage function not working
