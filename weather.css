@@ -1,6 +1,15 @@
+body {
+    background-color: #b3e5fc;
+    font-family: 'Thasadith', sans-serif;
+    font-weight: bold;
+
+}
+
 .jumbotron {
     width: 100%;
     height: 100%;
+    background-color: #0090eac9;
+    color: #e1f5fe;
     
 }
 
@@ -10,36 +19,115 @@
     margin-left: 20px;
     display: inline-block;
     float: left;
-    width: 20%
+    width: 20%;
+    background-color: #e1f5fe;
 }
 
 #cityWeather {
     width: 60vw !important;
-    height: 40vh;
+    
     display: inline-block;
     float: right;
-    width: 80%
+    width: 80%;
+    background-color: #e1f5fe;
+}
+
+#cityList.list-group-item {
+    background-color: #e1f5fe;
 }
 
 #forecastTitle {
     padding-top: 15px !important;
-    width: 30vw;
-    margin-left: 38%;
+    margin-left: 35%;
+    text-align: center !important;
+    color: #0d47a1;
     
 }
 
 #five-boxes {
-    margin-left: 37%;
+   margin-top: 15px;
+   margin-left: 7%;
+    
 }
 
 .col-md-auto {
     padding-right: 32px;
 }
 
-#forecastCard {
-    height: 40vh; 
-}
 
 .location {
     display: block;
+    background-color: #0d47a1; 
+    color: white; 
+    width: 20vw;
+    transition-duration: 0.4s;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px 0 #42a5f5, 0 6px 20px 0 #42a5f5;
+    border-color: #42a5f5;
+   
 }
+
+.location:hover, .location:active {
+    background-color: #0090eac9;
+    color: white;
+    box-shadow: 0 12px 16px 0 #42a5f5, 0 17px 50px 0 #42a5f5;
+    border-color: #42a5f5;
+    outline-color: #42a5f5;
+}
+
+.card-body {
+    background-color: #e1f5fe;
+    color: #0090eac9;
+    text-align: center;
+}
+
+.Date-fore {
+    padding-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #e1f5fe;
+    color: #0d47a1;
+}
+
+.card {
+    background-color: #e1f5fe;
+}
+
+.foreIcon {
+    margin-left: 20px;
+    width: 150px;
+}
+
+img {
+    background-color: #e1f5fe;
+}
+
+.form-inline {
+    padding-top: 15px;
+}
+
+#search-city {
+    background-color: #0d47a1;
+}
+
+.cityHead {
+    font-size: 35px;
+    color: #0d47a1;
+    font-weight: bold;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.current-temp, .current-hum, .current-wind, .Date, img, .uv-index {
+    padding-left: 10px;
+    color: #0090eac9;
+    font-size: 20px;
+}
+
+.Date {
+    font-weight: bolder;
+    font-size: 25px;
+    color: #0d47a1;
+}
+

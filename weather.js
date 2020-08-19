@@ -14,12 +14,13 @@ function currentWeather(city) {
       //Printing current weather info to console
       console.log(response);
 
-      var cityName= $("<p>").text(response.name);
+      var cityName= $("<p>").addClass("cityHead").text("Current weather in " + response.name + ":");
       console.log(cityName)
 
       //Date changed to MM/DD/YY
       var date= new Date(response.dt * 1000).toLocaleDateString();
-      var cityDate= $("<p>").addClass("Date").text(date);
+      var cityDate= $("<p>").addClass("Date").text("Today is " + date + ".");
+     
       var cityIcon= $("<img>").attr("src", "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png")
      
       //Converting temp from Kelvin to Fahrenheit 
@@ -80,23 +81,25 @@ function fiveDay(city) {
             console.log(forecast)
             
             for (var i = 0;i < forecast.length; i++){
+                
                 //Pulling and setting times (3:00pm temp since that's when it's the hottest)
                 if (forecast[i].dt_txt.indexOf("15:00:00") !== -1) {
 
                 //creating cards and appending forecast data    
                 var Column= $("<div>").attr("class", "col-md-auto")
                 $("#five-boxes").append(Column);
-                var foreCard= $("<div>").attr("class", "card").attr("style", "width: 9rem;")
+                var foreCard= $("<div>").attr("class", "card").attr("style", "width: 12rem;")
                 $("#five-boxes").append(foreCard);
 
                 //Date changed to MM/DD/YY
                 var fiveDate= new Date(forecast[i].dt * 1000).toLocaleDateString();
-                var foreDate= $("<header>").addClass("Date").text(fiveDate);
+                var foreDate= $("<header>").addClass("Date-fore").text(fiveDate);
                 foreCard.append(foreDate);
-                var foreIcon= $("<img>").attr("src", "https://openweathermap.org/img/w/" + forecast[i].weather[0].icon + ".png")
+                var foreIcon= $("<img>").addClass("foreIcon").attr("src", "https://openweathermap.org/img/w/" + forecast[i].weather[0].icon + ".png")
                 foreCard.append(foreIcon);
                 var foreBody= $("<div>").attr("class", "card-body");
                 foreCard.append(foreBody);
+
                 //Converting temp from Kelvin to Fahrenheit 
                 var temp = Math.round(((forecast[i].main.temp - 273.15) * 9/5 + 32));
                 var foreTemp= $("<p>").addClass("fore-temp").text("Temperature: " + temp + "°F");
