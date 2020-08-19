@@ -13,4 +13,4 @@ This is a simple weather dashboard using the server-side API, [OpenWeather](http
 
 ## Images ##
 
-![ScreenShot](https://raw.github.com/tajah93/Weather-Dashboard/Images/Weather.png)
+![ScreenShot](https://raw.github.com/tajah93/Weather-Dashboard/master/Images/Weather.png)
