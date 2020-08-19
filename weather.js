@@ -144,16 +144,17 @@ $("#search-city").on("click", function(event) {
     }    
 });
 
-$(".location").on("click", function(event) {
-    event.preventDefault();
+// localStorage function not working
+// $(".location").on("click", function(event) {
+//     event.preventDefault();
     
-    var saveCity= $("#city-input").val()
+//     var saveCity= $("#city-input").val()
 
-    localStorage.setItem("cities", JSON.stringify(saveCity));
+//     localStorage.setItem("cities", JSON.stringify(saveCity));
     
 
-    JSON.parse(localStorage.getItem("cities"));
+//     JSON.parse(localStorage.getItem("cities"));
 
-});
+// });
 
 
