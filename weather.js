@@ -43,24 +43,8 @@ function currentWeather(city) {
           console.log(response);
 
           var uvIndex= $("<p>").addClass("uv-index").text("UV Index: " + response.value);
-          var bgcolor;
-          if (response.value < 3) {
-              bgcolor = "green";
-          }
-          else if (response.value >= 3 || response.value <= 6) {
-              bgcolor = "yellow";
-          }
-          else if (response.value >= 6 || response.value <= 7) {
-              bgcolor = "orange";
-          }
-          else if (response.value >= 7 || response.value <= 10) {
-              bgcolor = "red";
-          }
-          else if (response.value >= 10)  {
-              bgcolor = "purple";
-          }
-
-          uvIndex.append($("<span>").attr("class", "uv-index").attr("style", `background-color${bgcolor}`));
+          
+          uvIndex.append($("<span>").attr("class", "uv-index"));
         
           $("#cityWeather").append(uvIndex)
       });
@@ -81,7 +65,7 @@ function fiveDay(city) {
             console.log(forecast)
             
             for (var i = 0;i < forecast.length; i++){
-                
+
                 //Pulling and setting times (3:00pm temp since that's when it's the hottest)
                 if (forecast[i].dt_txt.indexOf("15:00:00") !== -1) {
 
@@ -160,11 +144,16 @@ $("#search-city").on("click", function(event) {
     }    
 });
 
-$(b).on("click", function(event) {
+$(".location").on("click", function(event) {
     event.preventDefault();
-        
-    localStorage.setItem("cities", JSON.stringify(cityList))
     
+    var inputCity= $("#city-input").val().trim() 
+
+    localStorage.setItem("cities", inputCity);
+    
+
+    localStorage.getItem("cities");
+
 });
 
 
