@@ -147,12 +147,12 @@ $("#search-city").on("click", function(event) {
 $(".location").on("click", function(event) {
     event.preventDefault();
     
-    var inputCity= $("#city-input").val().trim() 
+    var saveCity= $("#city-input").val()
 
-    localStorage.setItem("cities", inputCity);
+    localStorage.setItem("cities", JSON.stringify(saveCity));
     
 
-    localStorage.getItem("cities");
+    JSON.parse(localStorage.getItem("cities"));
 
 });
 
