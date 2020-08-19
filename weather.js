@@ -130,22 +130,7 @@ function List() {
 
 
 //Search button event listener when clicked
-$(document).ready(function() {
-$("#search-city").on("click", function(event) {
-    event.preventDefault();
 
-    var inputCity= $("#city-input").val().trim();{
-        
-        
-        currentWeather(inputCity);
-        fiveDay(inputCity);
-        cityList.push(inputCity);
-
-        List();
-    }    
-});
-
-});
 
 // localStorage function not working
 // $(".location").on("click", function(event) {

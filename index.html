@@ -71,5 +71,19 @@
   </body>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script src="weather.js"></script>
-  
+  <script>
+  $("#search-city").on("click", function(event) {
+    event.preventDefault();
+
+    var inputCity= $("#city-input").val().trim();{
+        
+        
+        currentWeather(inputCity);
+        fiveDay(inputCity);
+        cityList.push(inputCity);
+
+        List();
+    }    
+});
+</script>
 </html>
