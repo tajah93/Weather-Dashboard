@@ -35,7 +35,7 @@ function currentWeather(city) {
       //UV Index function 
       var lat= response.coord.lat;
       var lon= response.coord.lon;
-      var UV= "http://api.openweathermap.org/data/2.5/uvi?appid=" + APIkey + "&lat=" + lat + "&lon=" + lon;
+      var UV= "https://api.openweathermap.org/data/2.5/uvi?appid=" + APIkey + "&lat=" + lat + "&lon=" + lon;
       $.ajax({
           url: UV,
           method: "GET"
@@ -53,7 +53,7 @@ function currentWeather(city) {
 
 //Five-day forecast function 
 function fiveDay(city) {
-        var fiveURL= "http://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIkey;
+        var fiveURL= "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + APIkey;
         $.ajax({
             url: fiveURL,
             method: "GET"
@@ -117,16 +117,6 @@ function List() {
 
     }   
 };
-
-
-
-// function Pull() {
-//     var saved = JSON.parse(localStorage.getItem("cities"));
-//     // if (saved !== null) {
-//     //     cityList = saved
-//     // }
-//     List();
-// };
 
 
 //Search button event listener when clicked
